@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07533b">
+<meta name="description" content="Enhakore VETC: samani, ujenzi mdogo na mafunzo ya ufundi stadi Arusha.">
+<title>Enhakore VETC | Samani na Ufundi</title>
+<style>
+:root{--green:#07533b;--green-deep:#06442f;--blue:#073553;--navy:#062a43;--lime:#a6df55;--ink:#142a35;--muted:#5d6d74;--line:#dce4e4;--white:#fff;--width:1280px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{margin:0;color:var(--ink);font-family:Arial,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(var(--width),calc(100% - 48px));margin-inline:auto}
+.skip{position:absolute;top:-60px;left:12px;z-index:100;padding:10px 14px;background:#fff;color:var(--green)}
+.skip:focus{top:10px}
+.site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6ebea}
+.header-row{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand img{width:50px;height:50px;object-fit:contain}
+.brand-name{display:block;color:var(--green-deep);font-size:20px;font-weight:900;letter-spacing:.025em;line-height:1}
+.brand-sub{display:block;margin-top:5px;color:#52645d;font-size:13px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:clamp(18px,2.5vw,36px)}
+.nav a{position:relative;padding:26px 0;color:#1e2b31;font-size:15px;font-weight:500;white-space:nowrap}
+.nav a:after{position:absolute;right:0;bottom:17px;left:0;height:2px;background:var(--green);content:"";transform:scaleX(0);transform-origin:left;transition:transform .18s}
+.nav a:hover,.nav a[aria-current=location]{color:var(--green)}
+.nav a:hover:after,.nav a[aria-current=location]:after{transform:scaleX(1)}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border:0;border-radius:6px;background:var(--lime);color:#16351f;font-size:14px;font-weight:800;transition:background .18s}
+.button:hover{background:#b9e875}
+.button-blue{background:#15549a;color:#fff}
+.button-blue:hover{background:#2069b5}
+.header-quote{min-height:42px;white-space:nowrap}
+.menu-toggle{display:none;min-height:42px;padding:0 13px;border:1px solid var(--line);border-radius:6px;background:white;color:var(--green);font-size:14px;font-weight:500}
+.hero{overflow:hidden;background:var(--green-deep);color:#fff}
+.hero-grid{min-height:380px;display:grid;grid-template-columns:55% 45%}
+.hero-copy{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:48px max(34px,calc((100vw - var(--width))/2)) 48px max(24px,calc((100vw - var(--width))/2));background:var(--green-deep)}
+.kicker{display:flex;align-items:center;gap:12px;margin:0 0 12px;color:#e4f0e9;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.kicker:after{width:56px;height:2px;background:linear-gradient(to right,var(--lime) 0 26px,transparent 26px 30px,#2a83c2 30px 56px);content:""}
+.hero h1{max-width:690px;margin:0;font-size:clamp(38px,4.5vw,58px);font-weight:800;line-height:1.03;letter-spacing:-.035em}
+.hero h1 span{color:var(--lime)}
+.hero-copy>p:not(.kicker){max-width:510px;margin:15px 0 0;color:#eef4f0;font-size:16px;font-weight:500;line-height:1.55}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero-actions .button{min-width:150px}
+.hero-photo{position:relative;min-height:380px;background:#332d25;clip-path:polygon(13% 0,100% 0,100% 100%,0 100%)}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-photo:after{position:absolute;inset:0;background:linear-gradient(90deg,#062a4310,#062a4336);content:""}
+.services{padding:30px 0 34px;background:#fff}
+.services-grid{display:grid;grid-template-columns:.88fr 1.5fr .95fr;gap:24px;align-items:stretch}
+.section-label{display:flex;align-items:center;gap:12px;margin:0 0 10px;color:var(--green);font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.section-label:after{width:25px;height:2px;background:currentColor;content:""}
+.services-intro{padding:12px 24px 8px 0;border-right:1px solid var(--line)}
+.services-intro h2{max-width:340px;margin:0;color:#092e4d;font-size:clamp(30px,3vw,40px);font-weight:800;line-height:1.12;letter-spacing:-.025em}
+.services-intro p{margin:12px 0;color:#344b55;font-size:15px;font-weight:500}
+.services-intro .button{min-height:40px;margin-top:5px;padding:0 16px}
+.service-list{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.service-item{padding:7px 16px 10px 0}
+.service-item:nth-child(2n){padding-left:18px;border-left:1px solid var(--line)}
+.service-item:nth-child(n+3){padding-top:14px;border-top:1px solid var(--line)}
+.service-item h3{margin:2px 0 4px;color:#142d43;font-size:17px;font-weight:600;line-height:1.25}
+.service-item p{margin:0;color:#40535c;font-size:15px;font-weight:600;line-height:1.45}
+.about{display:grid;grid-template-columns:58% 42%;min-height:310px;background:var(--green-deep);color:#fff}
+.about-main{display:grid;grid-template-columns:34% 66%;min-height:310px;background:var(--green-deep)}
+.about-photo{position:relative;min-height:310px;overflow:hidden}
+.about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.about-photo:after{position:absolute;inset:0;background:linear-gradient(90deg,#06442f28,#06442f48);content:""}
+.about-copy{align-self:center;padding:30px 34px 30px 30px}
+.about-copy .section-label{color:#d7efa7}
+.about-copy h2{margin:0;color:#fff;font-size:clamp(26px,2.8vw,36px);font-weight:700;line-height:1.1}
+.about-copy p{margin:11px 0 0;color:#e1ecf1;font-size:15px;font-weight:600}
+.about-copy .button{margin-top:15px;min-height:40px}
+.mission{padding:24px clamp(22px,3vw,44px);background:var(--green-deep)}
+.mission-item{padding:8px 0 15px;border-bottom:1px solid #ffffff36}
+.mission-item:last-child{border-bottom:0}
+.mission-item h3{margin:0;color:#bce578;font-size:18px;font-weight:800}
+.mission-item p{margin:4px 0 0;color:#f0f5f7;font-size:15px;font-weight:600}
+.trust{margin:0 0 30px;padding:36px 0 40px;background:var(--green-deep);color:#fff}
+.trust-heading{margin:0 0 13px;color:#d3ee99;font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.trust-grid{display:grid;grid-template-columns:1fr 1.2fr 1fr}
+.trust-item{padding:4px 24px;border-right:1px solid #ffffff35}
+.trust-item:first-child{padding-left:0}
+.trust-item:last-child{border:0}
+.trust-item h3{margin:0 0 5px;color:#bde875;font-size:19px;font-weight:800;line-height:1.2}
+.trust-item p{margin:0;color:#eff4f5;font-size:15px;font-weight:600;line-height:1.45}
+.client-logos{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:16px}
+.client-logo{width:78px;height:62px;display:grid;place-items:center;padding:6px;border-radius:6px;background:#fff}
+.client-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.client-placeholder{color:#07533b;font-size:12px;font-weight:500;line-height:1.2;text-align:center}
+.footer{background:var(--navy);color:white}
+.footer-main{display:grid;grid-template-columns:1fr 1.4fr auto;align-items:center;gap:24px;padding:17px 0}
+.footer-brand{display:flex;align-items:center;gap:10px}
+.footer-brand strong{display:block;font-size:15px;font-weight:600}
+.footer-brand span{display:block;color:#d5e5eb;font-size:13px;font-weight:500}
+.contact-lines{display:flex;flex-wrap:wrap;gap:5px 18px;color:#f0f5f7;font-size:14px;font-weight:500}
+.contact-lines a:hover{text-decoration:underline;text-underline-offset:3px}
+.contact-lines span{white-space:nowrap}
+.footer-bottom{padding:10px 0;border-top:1px solid #ffffff35;background:#062a43;color:#dce7ec;text-align:center;font-size:13px;font-weight:500}
+dialog{width:min(540px,calc(100% - 28px));max-height:min(88vh,780px);overflow:auto;padding:0;border:0;border-radius:12px;background:#073553;color:#fff}
+dialog::backdrop{background:#041c30c9}
+.quote-form{padding:26px}
+.form-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.form-head h2{margin:0;font-size:24px;font-weight:800}
+.form-close{padding:8px 12px;border:1px solid #ffffff55;border-radius:5px;background:transparent;color:#fff;font-size:14px;font-weight:500}
+.quote-form>p{margin:7px 0 18px;color:#dbe7eb;font-size:14px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.field{display:grid;gap:5px}
+.field.full{grid-column:1/-1}
+.field label{color:#f4f7f8;font-size:14px;font-weight:500}
+.field input,.field select,.field textarea{width:100%;padding:11px;border:1px solid #9bb5c4;border-radius:5px;background:#fff;color:#132b36;font-size:15px}
+.field textarea{min-height:95px;resize:vertical}
+.quote-form .button{margin-top:15px}
+:focus-visible{outline:3px solid #bce578;outline-offset:3px}
+@media(max-width:1000px){
+.header-row{gap:18px}.nav{gap:15px}.nav a{font-size:14px}
+.hero-grid{min-height:350px}.hero-photo{min-height:350px}.hero h1{font-size:clamp(36px,4.8vw,50px)}
+.services-grid{grid-template-columns:.85fr 1.5fr .85fr;gap:14px}.services-intro{padding-right:14px}.service-item{padding-right:10px}.service-item:nth-child(2n){padding-left:12px}
+.about{grid-template-columns:58% 42%}.about-main{grid-template-columns:30% 70%}.about-copy{padding:24px 24px 24px 20px}
+.footer-main{grid-template-columns:.9fr 1.5fr auto;gap:14px}
+}
+@media(max-width:760px){
+html{scroll-padding-top:70px}.container{width:calc(100% - 34px)}
+.header-row{min-height:68px}.brand img{width:42px;height:42px}.brand-name{font-size:17px}.brand-sub{font-size:11px}
+.menu-toggle{display:inline-flex}.header-quote{display:none}
+.nav{position:absolute;top:100%;right:0;left:0;display:none;align-items:stretch;gap:0;padding:8px 18px 14px;border-top:1px solid var(--line);background:#fff}
+.nav.open{display:flex;flex-direction:column}.nav a{padding:11px 4px;border-bottom:1px solid #edf0ef;font-size:15px}.nav a:after{display:none}
+.hero-grid{grid-template-columns:1fr;min-height:0}.hero-copy{min-height:360px;padding:42px 22px}.hero h1{font-size:clamp(40px,9vw,58px)}
+.hero-photo{min-height:260px;clip-path:none}
+.services{padding:28px 0}.services-grid{grid-template-columns:1fr;gap:18px}.services-intro{padding:0 0 16px;border-right:0;border-bottom:1px solid var(--line)}
+.services-intro h2{max-width:560px;font-size:34px}.service-list{min-height:0}.service-item{padding:10px 12px 13px 0}.service-item:nth-child(2n){padding-left:12px}.service-item:nth-child(n+3){padding-top:12px}
+.service-item h3{font-size:16px}.service-item p{font-size:14px}
+.about{grid-template-columns:1fr}.about-main{grid-template-columns:35% 65%;min-height:270px}.about-photo{min-height:270px}.about-copy{padding:22px 20px}.mission{padding:20px 24px}
+.trust-grid{grid-template-columns:1fr}.trust-item,.trust-item:first-child{padding:14px 0;border-right:0;border-bottom:1px solid #ffffff35}.trust-item:last-child{border-bottom:0}
+.footer-main{grid-template-columns:1fr;gap:14px}.contact-lines{gap:7px 14px}.footer-contact-action{justify-self:start}
+}
+@media(max-width:480px){
+.container{width:calc(100% - 28px)}.hero-copy{min-height:350px;padding:38px 17px}.hero h1{font-size:40px}.hero-copy>p:not(.kicker){font-size:15px}.hero-actions{gap:9px}.hero-actions .button{min-width:0;padding:0 14px;font-size:13px}
+.service-list{grid-template-columns:1fr}.service-item,.service-item:nth-child(2n),.service-item:nth-child(n+3){padding:12px 0;border-left:0;border-top:1px solid var(--line)}
+.about-main{grid-template-columns:1fr}.about-photo{min-height:220px}.about-copy{padding:24px 20px}.mission-item h3{font-size:17px}
+.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.quote-form{padding:20px}.form-head h2{font-size:21px}.contact-lines{display:grid;grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+body{background:var(--navy)}
+section{scroll-margin-top:88px}
+.services{padding:48px 0 52px}
+.about{margin:30px 0 0}
+.trust{padding:44px 0 48px}
+.carousel-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .28s ease}
+.carousel-image.changing{opacity:.3}
+.carousel-caption{position:absolute;right:0;bottom:0;left:0;padding:42px 12px 11px;background:linear-gradient(transparent,#062a43ed);color:#fff}
+.carousel-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;font-weight:500}
+.carousel-progress{height:3px;margin:8px 0;background:#ffffff70}
+.carousel-progress span{display:block;width:6.25%;height:100%;background:var(--lime);transition:width .25s}
+.carousel-controls{display:flex;justify-content:space-between;gap:10px}
+.carousel-controls button{display:grid;width:34px;height:34px;place-items:center;padding:0;border:1px solid #ffffff80;border-radius:50%;background:#062a4390;color:#fff;font-size:22px;font-weight:400;line-height:1}
+.carousel-controls button:hover{background:#15549a}
+.trust-preview{max-width:720px;margin:8px 0 18px;color:#e1eee5;font-size:14px;font-weight:400}
+.trust-grid{margin-top:18px;transition:opacity .2s}
+@media(max-width:760px){.services{padding:38px 0 42px}.about{margin:22px 0 0}.trust{margin:0 0 22px;padding:30px 0 34px}.about{scroll-margin-top:72px}}
+@media(max-width:480px){.carousel-meta{font-size:13px}.carousel-controls button{width:34px;height:34px;font-size:22px;padding:0}}
+
+.carousel-caption{z-index:2}
+
+body,button,input,select,textarea{font-family:Arial,Helvetica,sans-serif}
+section{scroll-margin-top:88px}
+.nav a,.brand-sub,.kicker,.section-label,.trust-heading,.contact-lines,.footer-brand span,.footer-bottom,.carousel-meta,.carousel-controls button{font-weight:500}
+.button{font-weight:600}
+.service-item p,.about-copy p,.mission-item p,.trust-item p{font-weight:400}
+#trust-title{margin:0 0 8px;color:#d3ee99;font-size:clamp(28px,3vw,36px);font-weight:700;letter-spacing:-.02em;line-height:1.12;text-transform:none}
+
+/* Slightly reduce the overall type scale while preserving readable body text. */
+body{font-size:14px}
+.nav a{font-size:13px}
+.hero h1{font-size:clamp(34px,4.1vw,52px)}
+.services-intro h2{font-size:clamp(26px,2.6vw,36px)}
+.services-intro p,.service-item p,.about-copy p,.mission-item p,.trust-item p{font-size:13px}
+.service-item h3{font-size:16px}
+.about-copy h2{font-size:clamp(22px,2.2vw,30px)}
+.trust-item h3{font-size:17px}
+#trust-title{font-size:clamp(26px,2.7vw,34px)}
+.about-copy h2{font-size:clamp(26px,2.8vw,36px);font-weight:700;line-height:1.1}
+.about-copy p{color:#e7f0e8}
+.about-copy .section-label{font-size:15px}
+.button{font-size:13px}
+.section-label{font-size:13px}
+.contact-lines{font-size:13px}
+.footer-bottom{font-size:12px}
+@media(max-width:1000px){.hero h1{font-size:clamp(32px,4.4vw,46px)}}
+@media(max-width:760px){.hero h1{font-size:clamp(36px,8.3vw,52px)}.services-intro h2{font-size:30px}}
+@media(max-width:480px){.hero h1{font-size:36px}.services-intro h2{font-size:28px}}
+:root{--page-min-height:clamp(460px,60vh,600px)}
+.hero{display:flex;min-height:var(--page-min-height)}
+.hero-grid{flex:1;min-height:var(--page-min-height)}
+.services{display:flex;align-items:center;min-height:var(--page-min-height)}
+.about-page{display:flex;flex-direction:column;min-height:var(--page-min-height);background:var(--green-deep)}
+.about{flex:1 1 auto;min-height:0;margin:0}
+.trust{display:flex;align-items:center;flex:1 1 auto;min-height:0;margin:0}
+.footer{display:flex;flex-direction:column;justify-content:space-between;min-height:var(--page-min-height)}
+.footer-main{flex:1;align-content:center}
+@media(max-width:760px){:root{--page-min-height:clamp(480px,64vh,640px)}}
+.services{padding:28px 0;min-height:var(--page-min-height)}
+.services-grid{grid-template-columns:minmax(160px,.55fr) minmax(0,1.45fr);gap:28px;align-items:center}
+.service-list{grid-template-columns:1fr;grid-template-rows:auto;gap:0}
+.service-item,.service-item:nth-child(2n),.service-item:nth-child(n+3){padding:10px 0;border:0;border-top:1px solid var(--line)}
+.service-item:first-child{border-top:0}
+.service-logos{grid-column:1/-1;justify-content:center;margin-top:0;padding-top:12px}
+.about-main{min-height:270px}
+.trust{padding:30px 0 34px}
+.footer-main{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:12px;padding:24px 0}
+.contact-lines{display:flex;flex-direction:column;align-items:flex-start;width:100%;gap:8px}
+.contact-lines span{white-space:normal}
+.map-link{display:inline-flex;align-items:center;gap:8px;color:#d3ee99;font-size:13px;font-weight:500}
+.map-link svg{width:18px;height:18px;flex:none;fill:currentColor}
+.footer{position:relative;isolation:isolate;overflow:hidden}
+.footer::before{content:"";position:absolute;z-index:0;top:50%;left:50%;width:min(78vw,660px);aspect-ratio:1408 / 768;transform:translate(-50%,-50%);background:url("./enhakore_vetc_transparent.png") center/contain no-repeat;filter:grayscale(1) brightness(0) invert(1);opacity:.09;pointer-events:none}
+.footer-main,.footer-bottom{position:relative;z-index:1}
+@media(max-width:760px){.services{padding:24px 0}.services-grid{grid-template-columns:1fr;gap:14px}.services-intro{padding:0 0 12px}.about-main{min-height:0}.footer-main{padding:22px 0}}
+.trust-grid{grid-template-columns:1fr;gap:0}
+.trust-item,.trust-item:first-child{padding:14px 0;border-right:0;border-bottom:1px solid #ffffff35}
+.trust-item:last-child{border-bottom:0}
+@media(max-width:760px){.footer::before{width:min(92vw,520px);opacity:.07}}
+.about{grid-template-columns:minmax(160px,.55fr) minmax(0,1.55fr) minmax(190px,.9fr)}
+.about-heading{align-self:center;padding:26px 24px}
+.about-heading h2{margin:0;color:#fff;font-size:clamp(24px,2.5vw,32px);font-weight:600;line-height:1.12}
+.about-main{grid-template-columns:1fr;min-height:300px}
+.about-copy{padding:24px}
+.brand-name{font-weight:700}
+.hero h1{font-weight:700}
+.services-intro h2{font-weight:700}
+.service-item h3{font-weight:500}
+.mission-item h3,.trust-item h3,#trust-title{font-weight:600}
+.button{font-weight:500}
+@media(max-width:1000px){.about{grid-template-columns:minmax(150px,.55fr) minmax(0,1.45fr)}.mission{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:20px}}
+@media(max-width:760px){.about{grid-template-columns:1fr}.about-heading,.about-main,.mission{grid-column:1}.about-heading{padding:24px 22px 14px}.about-main{min-height:0}.mission{display:block}}
+@media(max-width:480px){.about-main{grid-template-columns:1fr}}
+.trust .container{display:grid;grid-template-columns:minmax(160px,.55fr) minmax(0,1.45fr);column-gap:28px;row-gap:8px;align-content:center}
+.trust-heading,.trust-preview,.trust-grid{grid-column:2}
+@media(max-width:760px){.trust .container{grid-template-columns:1fr;row-gap:0}.trust-heading,.trust-preview,.trust-grid{grid-column:1}}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ruka hadi kwenye maudhui</a>
+<header class="site-header">
+<div class="container header-row">
+<a class="brand" href="#nyumbani" aria-label="Enhakore VETC, mwanzo"><img src="./enhakore-crest.webp" alt=""><span><strong class="brand-name">ENHAKORE VETC</strong><span class="brand-sub">Samani, ujenzi na ufundi stadi</span></span></a>
+<nav class="nav" aria-label="Urambazaji mkuu">
+<a href="#nyumbani" data-nav aria-current="location">Nyumbani</a><a href="#kazi" data-nav>Kazi Zetu</a><a href="#kuhusu" data-nav>Kuhusu Sisi</a><a href="#mawasiliano" data-nav>Mawasiliano</a>
+</nav>
+<button class="button header-quote quote-open" type="button" aria-controls="quote-dialog">Omba Nukuu</button>
+<button class="menu-toggle" type="button" aria-label="Fungua menyu" aria-expanded="false">Menyu</button>
+</div>
+</header>
+<main id="main">
+<section class="hero" id="nyumbani" aria-labelledby="hero-title"><div class="hero-grid">
+<div class="hero-copy"><p class="kicker">Enhakore VETC</p>
+<h1 id="hero-title">Utaalamu wa samani,<br>ujenzi mdogo na<br><span>mafunzo ya ufundi stadi.</span></h1>
+<p>Tangu mwaka 2015, tunasanifu na kutengeneza samani. Kazi kwa ufanisi, kwa wakati, kwa viwango na kwa kuzingatia mahitaji yako.</p>
+<div class="hero-actions"><button class="button quote-open" type="button" aria-controls="quote-dialog">Omba Nukuu</button><a class="button button-blue" href="https://wa.me/255765753537" target="_blank" rel="noopener">Wasiliana Nasi</a></div>
+</div>
+<div class="hero-photo"><img class="carousel-image" id="carousel-image" src="./image%20reosurces/Madawati%20ya%20kila%20aina.jpg" alt="Madawati ya shule yaliyotengenezwa na Enhakore VETC" fetchpriority="high"><div class="carousel-caption"><div class="carousel-meta"><span id="carousel-title" aria-live="polite">Madawati ya shule</span><span id="carousel-count">01 / 16</span></div><div class="carousel-progress"><span id="carousel-progress"></span></div><div class="carousel-controls"><button type="button" id="carousel-prev" aria-label="Picha iliyotangulia">&lsaquo;</button><button type="button" id="carousel-next" aria-label="Picha inayofuata">&rsaquo;</button></div></div></div>
+</div></section>
+<section class="services" id="kazi" aria-labelledby="services-title">
+<div class="container services-grid">
+<div class="services-intro"><h2 id="services-title">Kazi Zetu</h2></div>
+<div class="service-list">
+<article class="service-item"><h3>Usanifu na utengenezaji wa samani</h3><p>Samani za mbao, chuma na mchanganyiko kwa shule, ofisi, hospitali na nyumbani.</p></article>
+<article class="service-item"><h3>Ujenzi mdogo</h3><p>Miundombinu ya shule, majengo yasiyozidi ghorofa mbili na huduma za umeme.</p></article>
+<article class="service-item"><h3>Matengenezo</h3><p>Utafiti na uchunguzi wa kina kabla ya matengenezo ili kuzuia uharibifu na gharama kubwa.</p></article>
+<article class="service-item"><h3>Mafunzo ya ufundi stadi</h3><p>Mafunzo ya vitendo kwa vijana na wadau katika usanifu, utengenezaji na matengenezo.</p></article>
+</div>
+<div class="client-logos service-logos" aria-label="Nembo za baadhi ya wateja">
+<div class="client-logo"><img src="./More%20than%2050%20projects%20%2C%20valu%20more%20than%20250m%20tsh%20of%20value/acc.jpg" alt="Nembo ya Halmashauri ya Jiji la Arusha" loading="lazy"></div>
+<div class="client-logo"><img src="./More%20than%2050%20projects%20%2C%20valu%20more%20than%20250m%20tsh%20of%20value/nelson%20mandela.jpg" alt="Nembo ya Nelson Mandela African Institute of Science and Technology" loading="lazy"></div>
+<div class="client-logo client-placeholder" aria-label="Wateja wengine">Wengine zaidi</div>
+</div>
+</div></section>
+<section class="about-page" id="kuhusu" aria-label="Kuhusu Sisi na imani ya wateja">
+<section class="about" aria-labelledby="about-title">
+<div class="about-heading"><h2 id="about-title">Kuhusu Sisi</h2></div>
+<div class="about-main"><div class="about-copy">
+<p>Enhakore VETC ilianzishwa Arusha mwaka 2015. Tunatengeneza samani, tunafanya ujenzi mdogo na tunatoa mafunzo ya ufundi stadi.</p>
+<p>Timu yetu inaongozwa na Richard Joseph Mwita, mwenye zaidi ya miaka 30 ya uzoefu. Tuna leseni za uzalishaji wa samani, ujenzi na mafunzo.</p><a class="button button-blue" href="#mawasiliano">Wasiliana Nasi</a>
+</div><div class="about-photo"><img src="./image%20reosurces/image_20261024_212754-show-the-finished-black-metal-desk-frame-beside-th.jpg" alt="Fundi akifanya kazi ya chuma katika karakana" loading="lazy"></div></div>
+<div class="mission">
+<div class="mission-item"><h3>Maono Yetu</h3><p>Kuwa kituo kinachoongoza kwa kuzalisha samani bora na kutoa mafunzo ya ufundi stadi.</p></div>
+<div class="mission-item"><h3>Dhamira Yetu</h3><p>Kuzalisha samani imara, kutoa mafunzo ya vitendo na huduma za ujenzi zinazokidhi viwango.</p></div>
+</div>
+</section>
+<section class="trust" aria-labelledby="trust-title"><div class="container">
+<h2 class="trust-heading" id="trust-title">Kwa nini wateja wanaamini Enhakore VETC?</h2>
+<p class="trust-preview">Zaidi ya miradi 100 iliyotekelezwa. Kazi kwa ufanisi, kwa wakati, kwa viwango na kwa kuzingatia mahitaji.</p>
+<div class="trust-grid" id="trust-details">
+<div class="trust-item"><h3>Uzoefu na Utaalamu</h3><p>Tangu 2015. Thamani ya miradi ni zaidi ya TSh 250 milioni.</p></div>
+<div class="trust-item"><h3>Uwezo wa Kushiriki Zabuni</h3><p>Tumesajiliwa NeST. Namba ya usajili ni 10-05-63923-0000080450.</p></div>
+<div class="trust-item"><h3>Kazi kwa Ufanisi na kwa Wakati</h3><p>Tunazingatia viwango, mahitaji na bajeti ya kila mteja. Tunafanya kazi kwa uwazi na kukamilisha kwa wakati.</p></div>
+<div class="trust-item"><h3>Utafiti wa Malighafi na Matengenezo</h3><p>Tunafanya utafiti wa malighafi zenye ubora na unafuu, kwa kuzingatia urahisi wa matengenezo. Tunatoa huduma za matengenezo popote alipo mteja.</p></div>
+</div></div></section>
+</section>
+</main>
+<footer class="footer" id="mawasiliano" aria-label="Mawasiliano na taarifa za kampuni">
+<div class="container footer-main">
+<a class="footer-brand" href="#nyumbani"><span><strong>ENHAKORE VETC</strong><span>Samani, ujenzi mdogo na ufundi stadi</span></span></a>
+<div class="contact-lines"><a href="https://wa.me/255765753537" target="_blank" rel="noopener">WhatsApp +255 765 753 537</a><span>Mkurugenzi Richard Mwita: <a href="tel:+255717356279">0717 356 279</a></span><span>Afisa kazi Jerome Joseph: <a href="tel:+255695648739">0695 648 739</a></span><a href="mailto:enhakorevetc@gmail.com">enhakorevetc@gmail.com</a><span>Olomitu Mlangarini, Arusha. Makutano ya Chekereni na Afrika Mashariki.</span><a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=-3.420972222%2C36.758194444" target="_blank" rel="noopener" aria-label="Fungua Enhakore Workshop kwenye Google Maps"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg><span>Enhakore Workshop kwenye Google Maps</span></a><span>S.L.P. 123 Arusha</span></div>
+<a class="button button-blue footer-contact-action" href="https://wa.me/255765753537" target="_blank" rel="noopener">Wasiliana Nasi</a>
+</div>
+<div class="footer-bottom">&copy; <span id="year">2026</span> ENHAKORE VETC. Haki zote zimehifadhiwa. Arusha, Tanzania.</div>
+</footer>
+<dialog id="quote-dialog" aria-labelledby="quote-title">
+<form class="quote-form" id="quote-form">
+<div class="form-head"><h2 id="quote-title">Omba Nukuu</h2><button class="form-close" type="button">Funga</button></div>
+<p>Jaza maelezo ya kazi unayohitaji. Ujumbe utafunguka kwenye WhatsApp.</p>
+<div class="form-grid">
+<div class="field"><label for="name">Jina lako</label><input id="name" name="name" autocomplete="name" required></div>
+<div class="field"><label for="phone">Namba ya simu</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+<div class="field full"><label for="service">Huduma unayohitaji</label><select id="service" name="service" required><option value="" disabled selected>Chagua huduma</option><option>Samani na usanifu</option><option>Ujenzi mdogo</option><option>Matengenezo</option><option>Mafunzo ya ufundi stadi</option><option>Nyingine</option></select></div>
+<div class="field full"><label for="message">Maelezo ya mradi</label><textarea id="message" name="message"></textarea></div>
+</div>
+<button class="button" type="submit">Endelea WhatsApp</button>
+</form>
+</dialog>
+<script>
+
+const menuButton=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.nav');
+function setMenu(open){menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Funga menyu':'Fungua menyu');nav.classList.toggle('open',open);menuButton.textContent=open?'Funga':'Menyu'}
+menuButton.addEventListener('click',()=>setMenu(menuButton.getAttribute('aria-expanded')!=='true'));
+nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false)});
+document.addEventListener('click',event=>{if(!nav.contains(event.target)&&!menuButton.contains(event.target))setMenu(false)});
+const navLinks=[...document.querySelectorAll('[data-nav]')];
+const sections=[...document.querySelectorAll('main section[id]'),document.querySelector('#mawasiliano')].filter(Boolean);
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{const current=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(current)navLinks.forEach(link=>link.getAttribute('href')==='#'+current.target.id?link.setAttribute('aria-current','location'):link.removeAttribute('aria-current'))},{rootMargin:'-30% 0px -60% 0px',threshold:[0,.15,.35,.6]});sections.forEach(section=>observer.observe(section))}
+document.querySelector('#year').textContent=new Date().getFullYear();
+const quoteDialog=document.querySelector('#quote-dialog');
+document.querySelectorAll('.quote-open').forEach(button=>button.addEventListener('click',()=>quoteDialog.showModal()));
+document.querySelector('.form-close').addEventListener('click',()=>quoteDialog.close());
+document.querySelector('#quote-form').addEventListener('submit',event=>{event.preventDefault();const form=new FormData(event.currentTarget);const values=['Habari Enhakore VETC, naomba nukuu.','Jina: '+form.get('name'),'Simu: '+form.get('phone'),'Huduma: '+form.get('service')];const details=String(form.get('message')||'').trim();if(details)values.push('Maelezo: '+details);window.open('https://wa.me/255765753537?text='+encodeURIComponent(values.join('\n')),'_blank','noopener,noreferrer');quoteDialog.close()});
+const galleryImages=[{"src":"./image%20reosurces/Madawati%20ya%20kila%20aina.jpg","title":"Madawati ya shule","alt":"Madawati na meza za shule zilizotengenezwa na Enhakore VETC"},{"src":"./image%20reosurces/ofisini%20na%20nyumnai%200a.jpg","title":"Samani za ofisi","alt":"Seti ya meza na makabati ya mbao kwa ofisi"},{"src":"./image%20reosurces/nyumbani%200.jpg","title":"Samani za nyumbani","alt":"Kabati la mbao na rafu za nyumbani"},{"src":"./image%20reosurces/Meza%2C%20viti%20na%20makabati%20ya%20kila%20aina.jpg","title":"Meza, viti na makabati","alt":"Samani mbalimbali za mbao katika karakana"},{"src":"./image%20reosurces/WhatsApp%20Image%202026-10-24%20at%203.22.50%20PM.jpeg","title":"Madawati ya darasani","alt":"Safu za madawati ya shule"},{"src":"./image%20reosurces/WhatsApp%20Image%202026-10-24%20at%203.22.54%20PM%20(1).jpeg","title":"Samani za ofisi","alt":"Dawati la ofisi lililotengenezwa kwa mbao"},{"src":"./image%20reosurces/images.jpg","title":"Mbao za samani","alt":"Mbao zilizokatwa kwa utengenezaji wa samani"},{"src":"./image%20reosurces/images%20(1).jpg","title":"Malighafi za mbao","alt":"Mbao za ujenzi na utengenezaji"},{"src":"./image%20reosurces/Samani%20za%20chuman%20na%20mbao.jpg","title":"Samani za chuma na mbao","alt":"Muunganiko wa fremu ya chuma na sehemu ya mbao"},{"src":"./image%20reosurces/images%20(4).jpg","title":"Malighafi za chuma","alt":"Fremu na vipande vya chuma kwa kazi za ufundi"},{"src":"./image%20reosurces/images%20(5).jpg","title":"Vifaa vya chuma","alt":"Chuma cha umbo la mraba kwa miradi ya ujenzi"},{"src":"./image%20reosurces/materials%200.jpeg","title":"Mabomba ya chuma","alt":"Mabomba ya chuma kwa kazi za utengenezaji"},{"src":"./image%20reosurces/materials.jpeg","title":"Vifaa vya mradi","alt":"Vifaa vya chuma vilivyopo kwenye eneo la kazi"},{"src":"./image%20reosurces/image_20261024_212754-show-the-finished-black-metal-desk-frame-beside-th.jpg","title":"Kazi ya karakana","alt":"Fundi akichomelea fremu ya chuma"},{"src":"./image%20reosurces/WhatsApp%20Image%202026-10-24%20at%203.22.53%20PM%20(2).jpeg","title":"Uchunguzi wa eneo","alt":"Eneo la kazi za ujenzi likichunguzwa"},{"src":"./image%20reosurces/WhatsApp%20Image%202026-10-24%20at%203.22.56%20PM.jpeg","title":"Taa za barabarani","alt":"Taa ya barabarani iliyowekwa kwenye eneo la mradi"}];
+const carousel=document.querySelector('.hero-photo');const image=document.querySelector('#carousel-image');const title=document.querySelector('#carousel-title');const counter=document.querySelector('#carousel-count');const progress=document.querySelector('#carousel-progress');let slideIndex=0;let carouselTimer;
+function showSlide(index){slideIndex=(index+galleryImages.length)%galleryImages.length;const item=galleryImages[slideIndex];image.classList.add('changing');const nextImage=new Image();nextImage.onload=()=>{image.src=item.src;image.alt=item.alt;title.textContent=item.title;counter.textContent=String(slideIndex+1).padStart(2,'0')+' / '+String(galleryImages.length).padStart(2,'0');progress.style.width=((slideIndex+1)/galleryImages.length*100)+'%';requestAnimationFrame(()=>image.classList.remove('changing'))};nextImage.onerror=()=>{image.src=item.src;image.alt=item.alt;title.textContent=item.title;counter.textContent=String(slideIndex+1).padStart(2,'0')+' / '+String(galleryImages.length).padStart(2,'0');progress.style.width=((slideIndex+1)/galleryImages.length*100)+'%';image.classList.remove('changing')};nextImage.src=item.src;const preload=new Image();preload.src=galleryImages[(slideIndex+1)%galleryImages.length].src}
+showSlide(0);
+document.querySelector('#carousel-prev').addEventListener('click',()=>showSlide(slideIndex-1));document.querySelector('#carousel-next').addEventListener('click',()=>showSlide(slideIndex+1));
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;function stopCarousel(){window.clearInterval(carouselTimer)}function startCarousel(){stopCarousel();if(!reducedMotion)carouselTimer=window.setInterval(()=>showSlide(slideIndex+1),5500)}carousel.addEventListener('mouseenter',stopCarousel);carousel.addEventListener('mouseleave',startCarousel);carousel.addEventListener('focusin',stopCarousel);carousel.addEventListener('focusout',event=>{if(!carousel.contains(event.relatedTarget))startCarousel()});startCarousel();
+
+</script>
+</body>
+</html>
